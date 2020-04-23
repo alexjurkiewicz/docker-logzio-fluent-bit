@@ -1,0 +1,15 @@
+[SERVICE]
+    Log_Level debug
+
+[INPUT]
+    Name cpu
+
+[OUTPUT]
+    Name stdout
+    Match *
+
+[OUTPUT]
+    Name logzio
+    Match *
+    logzio_token ${LOGZIO_TOKEN}
+    logzio_type ${LOGZIO_TYPE}
