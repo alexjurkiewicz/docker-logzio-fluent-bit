@@ -10,42 +10,23 @@ This Docker image is an alternate to [the official Docker image supplied by logz
 
 ## Usage
 
-1. Create a `fluent-bit.conf` file containing your configuration:
-
-    ```ini
-    [SYSTEM]
-      Log_Level debug
-
-    [INPUT]
-        Name tail
-        Path /host/var/log/syslog
-        DB /host/tmp/logzio-tail-syslog.db
-
-    [FILTER]
-        Name aws
-        Match *
-
-    [OUTPUT]
-        Name logzio
-        Match *
-        logzio_token ${LOGZIO_TOKEN}
-        logzio_type my-logzio-type
-        logzio_debug true
-    ```
+1. Create a `fluent-bit.conf` file containing your configuration. Use [`fluent-bit.conf.example`](fluent-bit.conf.example) as an example.
 
     (You don't need to specify plugin file or load the logzio plugin, that's taken care of.)
 
 2. Run the docker image:
 
     ```sh
+    # These variables are referenced by the example config
     export LOGZIO_TOKEN=...
+    export LOGZIO_TYPE=my-log-type
 
     docker run \
       --rm -it \
-      -e "LOGZIO_TOKEN" \
+      -e "LOGZIO_TOKEN" -e "LOGZIO_TYPE" \
       -v "/local/path/to/fluent-bit.conf:/fluent-bit.conf" \
       -v "/:/host" \
-      alexjurkiewicz/logzio-fluent-bit
+      alexjurkiewicz/logzio-fluent-bit:latest
     ```
 
 ## Advanced
