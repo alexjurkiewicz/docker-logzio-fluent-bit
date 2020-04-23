@@ -50,7 +50,8 @@ This Docker image is an alternate to [the official Docker image supplied by logz
 
 ## Advanced
 
-1.
+1. Limitation in the logz.io plugin:
+
     > Logz.io-Out Plugin for Fluent Bit supports one output stream to Logz.io. We plan to add support for multiple streams in the future. In the meantime, we recommend running a new instance for each output stream you need.
 
     [(from the official logz.io docs)](https://docs.logz.io/shipping/shippers/fluent-bit.html)
