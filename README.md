@@ -22,6 +22,7 @@ It's based off the upstream [fluent-bit Dockerfile](https://hub.docker.com/r/flu
     [FILTER]
         Name aws
         Match *
+        imds_version v1
 
     [OUTPUT]
         Name logzio
